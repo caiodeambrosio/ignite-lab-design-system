@@ -12,20 +12,19 @@ jobs:
     steps:
       - name: 1. Checkout
         uses: actions/checkout@v3
-      
+
       - name: 2. Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      
+
       - name: 3. Install Dependencies
         run: npm ci
-      
+
       - name: 4. Build Storybook
         run: npm run build-storybook
 
       - name: 5. Deploy Storybook
         run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
-          GH_TOKEN: ${{ github.actor}}:${{ secrets.GITHUB_TOKEN}}
-
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
